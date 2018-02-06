@@ -1,1 +1,1 @@
-token=NDAzMjM0NjY4MDU4NzcxNDU2.DVt3tg.JPVOhP_Xm9ejN0E63W5j3IwbPls
+token="insert token here"
