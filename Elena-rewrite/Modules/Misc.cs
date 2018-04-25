@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text;
 using Discord.Commands;
 using Discord;
 using Discord.WebSocket;
 using System.Threading.Tasks;
+using ShikiApiLib;
 
 namespace Elena_rewrite.Modules
 {
+    
+
     public class Misc : ModuleBase<SocketCommandContext>
     {
         [Command("serverinfo")]
@@ -38,12 +42,68 @@ namespace Elena_rewrite.Modules
             await Context.Channel.SendMessageAsync("", false, embed);
         }
 
-        [Command("sendnudes")]
-        //[RequireUserPermission(GuildPermission.Administrator)] //необходимое разрешение для использования комманды
-        public async Task RevealSecret([Remainder]string args = "")
+        [Command("getUserId")]       
+        [RequireUserPermission(GuildPermission.Administrator)] //необходимое разрешение для использования комманды
+        public async Task GetUIdTask(SocketGuildUser user)
         {
-            var dmChannel = await Context.User.GetOrCreateDMChannelAsync();
-            await dmChannel.SendMessageAsync("nudes sent xD");
+            string result = user.ToString() + " ID is " + user.Id;
+            await Context.Channel.SendMessageAsync(result);
+        }
+
+        [Command("shiki")]
+        public async Task ShowShikiLink(SocketGuildUser user)
+        {
+            string sConnStr = new SqlConnectionStringBuilder
+            {
+                DataSource = ".",
+                InitialCatalog = "Elena",
+                IntegratedSecurity = true
+            }.ConnectionString;
+
+            using (SqlConnection conn = new SqlConnection(sConnStr))
+            {
+                conn.Open();
+                string result = "no results";
+                var sCommand = new SqlCommand(@"select Shikimori from Users where ID=@uID", conn); 
+                sCommand.Parameters.AddWithValue("@uID", user.Id.ToString());
+                string link = (string) sCommand.ExecuteScalar();
+                if (link.Length > 0)
+                {
+                     result = user.ToString() + " Shikimori profile: https://shikimori.org/" + link;
+                }              
+                await Context.Channel.SendMessageAsync(result);
+            }
+
+            
+        }
+
+        [Command("shiki.top")]
+        public async Task ShowShikiTop10(SocketGuildUser user)
+        {
+            string sConnStr = new SqlConnectionStringBuilder
+            {
+                DataSource = ".",
+                InitialCatalog = "Elena",
+                IntegratedSecurity = true
+            }.ConnectionString;
+
+            using (SqlConnection conn = new SqlConnection(sConnStr))
+            {
+                conn.Open();
+                string result = "no results";
+                var sCommand = new SqlCommand(@"select shiki_id from Users where ID=@uID", conn);
+                sCommand.Parameters.AddWithValue("@uID", user.Id.ToString());
+                string sID = (string)sCommand.ExecuteScalar();
+                if (sID.Length > 0)
+                {
+                    UserInfo info = ShikiApiStatic.GetUserInfo(Convert.ToInt32(sID));
+                    string res = info.ToString();
+
+                }
+                await Context.Channel.SendMessageAsync(result);
+            }
+
+            
         }
 
 

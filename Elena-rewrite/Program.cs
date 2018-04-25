@@ -16,12 +16,7 @@ namespace Elena_rewrite
         static void Main(string[] args)
         => new Program().StartAsync().GetAwaiter().GetResult(); //по сути это означает что вместо синхронного метода main мы лишь используем его как точку входа а сами запускаем из него асинхронную новую программу 
 
-        string sConnStr = new SqlConnectionStringBuilder
-        {
-            DataSource = @".",
-            InitialCatalog = "Elena",
-            IntegratedSecurity = true
-        }.ConnectionString; //подключение
+        
 
         public async Task StartAsync()
         {
@@ -37,22 +32,7 @@ namespace Elena_rewrite
             _handler = new CommandHandler(); //новый обработчик комманд
             await _handler.InitializeAsync(_client); //ждем его инициилизацию в клиенте
 
-            using (SqlConnection sConn = new SqlConnection(sConnStr))
-            {
-                sConn.Open();
-                SqlCommand sCommand = new SqlCommand
-                {
-                    Connection = sConn,
-                    CommandText = @"select * from Servers"
-                };
-                SqlDataReader reader = sCommand.ExecuteReader();
-                while (reader.Read())
-                {
-                    string servername = (string)reader["Name"];
-                    Console.WriteLine(servername);
-                }
-
-            }
+           
 
                 await Task.Delay(-1);   //не выключать программу
         }

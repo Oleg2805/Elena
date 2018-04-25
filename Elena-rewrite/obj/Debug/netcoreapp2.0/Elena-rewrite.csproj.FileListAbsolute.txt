@@ -2,10 +2,11 @@ c:\users\oleg\source\repos\Elena-rewrite\Elena-rewrite\bin\Debug\netcoreapp2.0\E
 c:\users\oleg\source\repos\Elena-rewrite\Elena-rewrite\bin\Debug\netcoreapp2.0\Elena-rewrite.runtimeconfig.json
 c:\users\oleg\source\repos\Elena-rewrite\Elena-rewrite\bin\Debug\netcoreapp2.0\Elena-rewrite.runtimeconfig.dev.json
 c:\users\oleg\source\repos\Elena-rewrite\Elena-rewrite\bin\Debug\netcoreapp2.0\Elena-rewrite.dll
-c:\users\oleg\source\repos\Elena-rewrite\Elena-rewrite\obj\Debug\netcoreapp2.0\Elena-rewrite.csprojResolveAssemblyReference.cache
 c:\users\oleg\source\repos\Elena-rewrite\Elena-rewrite\obj\Debug\netcoreapp2.0\Elena-rewrite.csproj.CoreCompileInputs.cache
 c:\users\oleg\source\repos\Elena-rewrite\Elena-rewrite\obj\Debug\netcoreapp2.0\Elena-rewrite.AssemblyInfoInputs.cache
 c:\users\oleg\source\repos\Elena-rewrite\Elena-rewrite\obj\Debug\netcoreapp2.0\Elena-rewrite.AssemblyInfo.cs
 c:\users\oleg\source\repos\Elena-rewrite\Elena-rewrite\bin\Debug\netcoreapp2.0\Elena-rewrite.pdb
 c:\users\oleg\source\repos\Elena-rewrite\Elena-rewrite\obj\Debug\netcoreapp2.0\Elena-rewrite.dll
 c:\users\oleg\source\repos\Elena-rewrite\Elena-rewrite\obj\Debug\netcoreapp2.0\Elena-rewrite.pdb
+C:\Users\Oleg\source\repos\Elena-rewrite\Elena-rewrite\bin\Debug\netcoreapp2.0\ShikiApiLib.dll
+C:\Users\Oleg\source\repos\Elena-rewrite\Elena-rewrite\bin\Debug\netcoreapp2.0\ShikiApiLib.pdb
